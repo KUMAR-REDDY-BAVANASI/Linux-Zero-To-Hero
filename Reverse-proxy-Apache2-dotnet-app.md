@@ -10,7 +10,7 @@ sudo a2enmod proxy_http
 
 sudo vi /etc/apache2/sites-available/myapp.conf
 
-
+```
 <VirtualHost *:80>
     ServerName your_domain_or_ip
 
@@ -18,10 +18,11 @@ sudo vi /etc/apache2/sites-available/myapp.conf
     ProxyPass / http://localhost:your_app_port/
     ProxyPassReverse / http://localhost:your_app_port/
 </VirtualHost>
-
+```
 
 Example
 -------
+```
 <VirtualHost *:80>
     ServerName localhost
 
@@ -29,7 +30,7 @@ Example
     ProxyPass / http://localhost:5000/
     ProxyPassReverse / http://localhost:5000/
 </VirtualHost>
-
+```
 
 sudo a2ensite myapp.conf
 
@@ -40,7 +41,7 @@ After reverse proxy we need to create a service for dotnet core application
 ----------------------------------------------------------------------------
 sudo vi /etc/systemd/system/myapp.service
 
-
+```
 [Unit]
 Description=Your App Name
 Wants=network-online.target
@@ -55,10 +56,11 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 
 Example:
 --------
+```
 [Unit]
 Description=Dataroom
 Wants=network-online.target
@@ -73,7 +75,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 
 sudo systemctl enable myapp.service
 
@@ -91,8 +93,6 @@ sudo journalctl -u myapp.service
 Examine Apache2 Error Logs
 --------------------------
 sudo tail -f /var/log/apache2/error.log
-
-
 
 
 Remove apache2 from ubuntu

@@ -6,7 +6,7 @@ sudo apt install nginx
 
 sudo vi /etc/nginx/sites-available/myapp.conf
 
-
+```
 server {
     listen 80;
     server_name your_domain_or_ip;
@@ -20,10 +20,11 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
-
+```
 
 Example:
 --------
+```
 server {
     listen 80;
     server_name your_domain_or_ip;
@@ -37,7 +38,7 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
-
+```
 
 sudo ln -s /etc/nginx/sites-available/myapp.conf /etc/nginx/sites-enabled/
 
@@ -50,7 +51,7 @@ After reverse proxy we need to create a service for dotnet core application
 ----------------------------------------------------------------------------
 sudo vi /etc/systemd/system/myapp.service
 
-
+```
 [Unit]
 Description=Your App Name
 Wants=network-online.target
@@ -65,10 +66,11 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 
 Example:
 --------
+```
 [Unit]
 Description=Dataroom
 Wants=network-online.target
@@ -83,7 +85,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 
 sudo systemctl enable myapp.service
 
