@@ -1,6 +1,7 @@
 Reverse proxy Nginx
 -------------------
 sudo apt update
+
 sudo apt install nginx
 
 sudo vi /etc/nginx/sites-available/myapp.conf
@@ -85,12 +86,15 @@ WantedBy=multi-user.target
 
 
 sudo systemctl enable myapp.service
+
 sudo systemctl start myapp.service
 
 sudo systemctl status myapp.service
 
 sudo systemctl stop myapp.service
+
 sudo systemctl restart myapp.service
+
 sudo journalctl -u myapp.service
 
 
@@ -110,4 +114,5 @@ sudo apt purge nginx-common
 sudo rm -rf /etc/nginx
 
 sudo deluser --remove-home nginx
+
 sudo delgroup nginx
