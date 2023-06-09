@@ -1,14 +1,24 @@
 Reverse proxy Apache2 
 ---------------------
+```
 sudo apt update
+```
 
+```
 sudo apt install apache2
+```
 
+```
 sudo a2enmod proxy
+```
 
+```
 sudo a2enmod proxy_http
+```
 
+```
 sudo vi /etc/apache2/sites-available/myapp.conf
+```
 
 ```
 <VirtualHost *:80>
@@ -32,10 +42,13 @@ Example
 </VirtualHost>
 ```
 
+```
 sudo a2ensite myapp.conf
+```
 
+```
 sudo systemctl restart apache2
-
+```
 
 After reverse proxy we need to create a service for dotnet core application
 ----------------------------------------------------------------------------
@@ -77,34 +90,59 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+```
 sudo systemctl enable myapp.service
+```
 
+```
 sudo systemctl start myapp.service
+```
 
+```
 sudo systemctl status myapp.service
+```
 
+```
 sudo systemctl stop myapp.service
+```
 
+```
 sudo systemctl restart myapp.service
+```
 
+```
 sudo journalctl -u myapp.service
+```
 
 
 Examine Apache2 Error Logs
 --------------------------
+```
 sudo tail -f /var/log/apache2/error.log
-
+```
 
 Remove apache2 from ubuntu
 ----------------------------
+```
 sudo systemctl stop apache2
+```
 
+```
 sudo systemctl disable apache2
+```
 
+```
 sudo apt purge apache2 apache2-bin apache2-utils
+```
 
+```
 sudo rm -rf /etc/apache2
+```
 
+```
 sudo deluser --remove-home www-data
+```
 
+```
 sudo delgroup www-data
+```

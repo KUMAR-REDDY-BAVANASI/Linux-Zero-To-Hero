@@ -1,10 +1,16 @@
 Reverse proxy Nginx
 -------------------
+```
 sudo apt update
+```
 
+```
 sudo apt install nginx
+```
 
+```
 sudo vi /etc/nginx/sites-available/myapp.conf
+```
 
 ```
 server {
@@ -40,16 +46,23 @@ server {
 }
 ```
 
+```
 sudo ln -s /etc/nginx/sites-available/myapp.conf /etc/nginx/sites-enabled/
+```
 
+```
 sudo nginx -t
+```
 
+```
 sudo systemctl restart nginx
-
+```
 
 After reverse proxy we need to create a service for dotnet core application
 ----------------------------------------------------------------------------
+```
 sudo vi /etc/systemd/system/myapp.service
+```
 
 ```
 [Unit]
@@ -87,34 +100,58 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+```
 sudo systemctl enable myapp.service
+```
 
+```
 sudo systemctl start myapp.service
+```
 
+```
 sudo systemctl status myapp.service
+```
 
+```
 sudo systemctl stop myapp.service
+```
 
+```
 sudo systemctl restart myapp.service
+```
 
+```
 sudo journalctl -u myapp.service
-
+```
 
 Examine Nginx Error Logs
 -------------------------
+```
 sudo tail -f /var/log/nginx/error.log
-
+```
 
 Remove Nginx in server completely
 ---------------------------------
+```
 sudo systemctl stop nginx
+```
 
+```
 sudo apt purge nginx
+```
 
+```
 sudo apt purge nginx-common
+```
 
+```
 sudo rm -rf /etc/nginx
+```
 
+```
 sudo deluser --remove-home nginx
+```
 
+```
 sudo delgroup nginx
+```
