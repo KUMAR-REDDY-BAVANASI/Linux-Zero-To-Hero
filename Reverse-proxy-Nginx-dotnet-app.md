@@ -1,5 +1,5 @@
-Reverse proxy Nginx
--------------------
+Reverse proxy Nginx Ubuntu 20.04
+--------------------------------
 ```
 sudo apt update
 ```
