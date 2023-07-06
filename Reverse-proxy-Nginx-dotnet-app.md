@@ -100,6 +100,19 @@ Restart=always
 WantedBy=multi-user.target
 ```
 
+To disable the default Nginx page and prevent it from being served, you can follow these steps:
+-----------------------------------------------------------------------------------------------
+Remove the symbolic link to the default Nginx configuration file:
+-----------------------------------------------------------------
+
+```
+sudo rm /etc/nginx/sites-enabled/default
+```
+
+```
+sudo systemctl restart nginx
+```
+
 ```
 sudo systemctl enable myapp.service
 ```
