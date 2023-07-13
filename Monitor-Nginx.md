@@ -1,17 +1,70 @@
 How to Monitor Nginx with Prometheus and Grafana? (Step-by-Step - Install - Monitor)
 ------------------------------------------------------------------------------------
-Install Dependencies
----------------------
+Install Nginx
+-------------
+
+To install the latest stable nginx version, we need to add an official nginx repository. First of all, before installing Nginx itself, we need to install some prerequisites.
 
 ```
 sudo apt update
+sudo apt install curl gnupg2 ca-certificates lsb-release ubuntu-keyring
+```
+
+Import an official nginx signing key so apt could verify the packages authenticity.
+
+```
+curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor | sudo tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+```
+
+Verify that the downloaded file contains the proper key. If the fingerprint is different, remove the file.
+
+```
+gpg --dry-run --quiet --no-keyring --import --import-options import-show /usr/share/keyrings/nginx-archive-keyring.gpg
+```
+
+To set up the apt repository for stable nginx packages, run the following command:
+
+```
+echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | sudo tee /etc/apt/sources.list.d/nginx.list
+```
+
+To install nginx, run the following commands:
+
+```
+sudo apt update
+apt-cache policy nginx
 sudo apt install nginx
-sudo nginx -v
-sudo systemctl enable nginx
-sudo systemctl status nginx
-sudo systemctl start nginx
+```
+
+Let's make sure that the basic metric module is configured with the nginx.
+
+```
+sudo nginx -V
+```
+
+You should be able to find --with-http_stub_status_module in the output. If you don't have it, you need to compile Nginx with this module or use the dynamic modules.
+
+Let's check if the Nginx is running.
+
+```
 sudo systemctl status nginx
 ```
+
+In case it's not, let's start it.
+
+```
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+Now it should be in a running state.
+
+```
+sudo systemctl status nginx
+```
+
+Let's use the Ubuntu IP address (http://<ip>/) to check if we can access Nginx.
+
 
 Expose Basic Nginx Metrics
 --------------------------
