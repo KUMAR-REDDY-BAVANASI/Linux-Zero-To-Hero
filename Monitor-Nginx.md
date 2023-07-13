@@ -457,12 +457,19 @@ systemctl status grafana-server
 Now you can access Grafana on port http://<ip>:3000. The username is admin, and the password is admin as well.
 
 First of all, let's add our Prometheus as a datasource.
+
 For the URL, use http://localhost:9090 and click save and test.
+
 Let's create a new dashboard and call it Nginx.
+
 Create a new Panel.
+
 For the metrics use nginx_connections_active.
+
 For the legend {{ instance }}.
+
 Title: Active Connections.
+
 I'm going to fill out the rest of the panels using the metrics that we retried from the status page. You can find this dashboard in my github repository.
 
 On the left-hand side, we have all the gauges, and on the right-hand side, all the counters. To make use of the counter, you need to apply a rate function, for example, to calculate a number of requests per second.
