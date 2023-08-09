@@ -37,12 +37,19 @@ openssl req -new -key mykey.key -out mycsr.csr
 This command will prompt you to enter the following information:
 
 Country Name (2 letter code): US
+
 State or Province Name (full name): California
+
 Locality Name (eg, city): California
+
 Organization Name (eg, company): TecAdmin Inc
+
 Organizational Unit Name (eg, section): Internet Advertisement
+
 Common Name (eg, fully qualified domain name): www.example.com
+
 Email Address: your_email@example.com
+
 Enter the appropriate information for your certificate, and then press Enter to continue. When you are finished, the CSR will be stored in the file "mycsr.csr".
 
 Submit the CSR to a certificate authority (CA) to obtain a signed certificate. The CA will use the CSR to create a certificate that is signed with the CA’s private key.
