@@ -312,6 +312,7 @@ nano: Simple command-line text editor.
 nano file_name
 ```
 
+
 vim: Advanced text editor.
 
 ```
