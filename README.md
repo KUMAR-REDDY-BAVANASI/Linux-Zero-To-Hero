@@ -178,7 +178,9 @@ df -h
 
 du: Display disk usage of files and directories.
 
+```
 du -h file_or_directory
+```
 
 top: Monitor system processes in real-time.
 
