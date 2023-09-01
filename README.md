@@ -73,14 +73,67 @@ mv: Move or rename files or directories.
 mv old_name new_name
 ```
 
-rm: Remove files or directories.
+To remove any file. -f means forcefully
 
 ```
-rm file_name
-rm -r directory_name
+rm -f [file-name]
+```
+
+To remove entire folder. -r means recursive. -f means forcefully
+
+```
+rm -rf [folder-name]
+```
+
+find text in a file
+
+```
+grep [text-to-search] [file-name]
+```
+
+find file in a root level
+
+```
+find / -name [file-name]
+```
+
+find directory in a root level
+
+```
+find / -type d -name [dir-name]
+```
+
+top 10 lines in a file.
+
+```
+head [file-name]
+```
+
+last 10 lines in a files
+
+```
+tail [file-name]
+```
+
+custom number of lines
+
+```
+head -n 5 [file-name]
 ```
 
 # Text Manipulation
+
+* Create the file and open it to enter text. Enter the text and press ctrl+d to save.
+
+```
+cat > [file-name]
+```
+
+* Append the text to the file.
+
+```
+cat >> [file-name]
+```
 
 cat: Display the contents of a file.
 
